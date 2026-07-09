@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ats-parser-service"
+version = "0.1.0"
+description = "Resume parser MVP for the ATS monorepo"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "pdfminer.six>=20231228",
+  "psycopg[binary]>=3.2.0,<4.0.0",
+  "python-docx>=1.1.0",
+  "spacy>=3.7.0,<4.0.0",
+]
+
+[project.scripts]
+ats-parser = "ats_parser.cli:main"
+ats-parser-consumer = "ats_parser.consumer:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]

@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ats-embedding-service"
+version = "0.1.0"
+description = "Embedding and retrieval MVP for the ATS monorepo"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "faiss-cpu>=1.8.0,<2.0.0",
+  "numpy>=1.26.0,<3.0.0",
+  "psycopg[binary]>=3.2.0,<4.0.0",
+  "sentence-transformers>=3.0.0,<4.0.0",
+]
+
+[project.scripts]
+ats-embedding = "ats_embedding.cli:main"
+ats-embedding-consumer = "ats_embedding.consumer:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]

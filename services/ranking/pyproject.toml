@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ats-ranking-service"
+version = "0.1.0"
+description = "Ranking MVP for the ATS monorepo"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "psycopg[binary]>=3.2.0,<4.0.0",
+]
+
+[project.optional-dependencies]
+offline-ml = [
+  "xgboost>=2.1.0,<3.0.0",
+]
+
+[project.scripts]
+ats-ranking = "ats_ranking.cli:main"
+ats-ranking-consumer = "ats_ranking.consumer:main"
+ats-ranking-offline = "ats_ranking.offline_cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]

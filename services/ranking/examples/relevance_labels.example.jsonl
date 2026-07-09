@@ -1,0 +1,4 @@
+{"job_id":"ml_engineer_jd_01","resume_id":"c1","label":3,"split":"train","source":"manual_review","notes":"Strong ML and Python alignment."}
+{"job_id":"ml_engineer_jd_01","resume_id":"c2","label":1,"split":"train","source":"manual_review","notes":"Partial relevance but weaker hands-on ML evidence."}
+{"job_id":"software_engineer_jd_01","resume_id":"c1","label":2,"split":"validation","source":"manual_review","notes":"Good backend fit with overlapping engineering skills."}
+{"job_id":"software_engineer_jd_01","resume_id":"c3","label":0,"split":"test","source":"manual_review","notes":"Low relevance for the target software role."}
