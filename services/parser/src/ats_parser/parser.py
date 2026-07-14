@@ -150,6 +150,9 @@ SECTION_ALIASES = {
         "educational qualification",
         "qualification",
         "qualifications",
+        "academic history",
+        "education background",
+        "studies"
     },
     "skills": {
         "skills",
@@ -161,6 +164,9 @@ SECTION_ALIASES = {
         "tools and technologies",
         "software proficiency",
         "relevant courses taken",
+        "expertise",
+        "skills languages",
+        "technical proficiencies"
     },
     "experience": {
         "experience",
@@ -170,18 +176,32 @@ SECTION_ALIASES = {
         "work experience internship",
         "internship",
         "internships",
+        "work history",
+        "professional background",
+        "career history",
+        "relevant experience",
+        "employment"
     },
     "projects": {
         "projects",
         "academic projects",
         "project experience",
         "research projects",
+        "key projects",
+        "selected projects",
+        "personal projects",
+        "technical projects",
+        "contributions",
+        "open source",
+        "featured projects"
     },
     "certifications": {
+        "qualification certificates",
         "certification",
         "certifications",
         "licenses",
         "licenses certifications",
+        "courses certifications"
     },
     "achievements": {
         "achievements",
@@ -197,9 +217,9 @@ SECTION_ALIASES = {
         "extra curricular activities",
         "extracurricular achievements",
         "extracurriculars",
+        "extracurricular activities"
     },
 }
-
 
 @dataclass
 class ParsedSections:
@@ -331,8 +351,13 @@ def detect_section_heading(line: str) -> str | None:
         for alias in aliases:
             if normalized == alias:
                 return section
-            if normalized.startswith(alias) and len(normalized.split()) <= len(alias.split()) + 2:
-                return section
+            # Fix: Handle both "Selected Projects" and "Projects Architecture" safely
+            if alias in normalized:
+                # Ensure it's matching a whole word phrase boundary, not a partial fragment
+                words = normalized.split()
+                alias_words = alias.split()
+                if all(w in words for w in alias_words):
+                    return section
 
     return None
 
