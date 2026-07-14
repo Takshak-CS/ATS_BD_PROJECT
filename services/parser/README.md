@@ -73,6 +73,11 @@ PYTHONPATH=shared/src:services/parser/src python3 -m ats_parser.consumer
 - PDF extraction uses `pdftotext -layout` when `poppler-utils` is available,
   then falls back to `pdfminer.six`.
 - DOCX extraction uses `python-docx` when available.
+- Known limitation: the current heuristic skill extraction under-recognizes
+  some valid resume phrasing and formatting, especially broad "computer skills"
+  bullet lists such as `Ms. Office`, `XP Window`, and similar legacy tool
+  labels. Some resumes with visible skill content can still end up with
+  `No skills detected.` in the parser manifest.
 - The current implementation is intentionally heuristic-first so it stays easy
   to run and debug inside Ubuntu before the rest of the pipeline is added.
 - The Kafka consumer listens for `resume.uploaded` and publishes
