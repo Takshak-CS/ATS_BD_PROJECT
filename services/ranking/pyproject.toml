@@ -21,6 +21,7 @@ offline-ml = [
 ats-ranking = "ats_ranking.cli:main"
 ats-ranking-consumer = "ats_ranking.consumer:main"
 ats-ranking-offline = "ats_ranking.offline_cli:main"
+ats-ranking-label = "ats_ranking.labeling_tool:main"
 
 [tool.setuptools]
 package-dir = {"" = "src"}

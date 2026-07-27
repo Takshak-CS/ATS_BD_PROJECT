@@ -248,9 +248,10 @@ class ResumeParser:
         warnings = list(extraction_warnings or [])
         sections = split_sections(text)
         header_lines = sections.lines.get("header", [])
+        resume_id = path.stem.strip()
 
         profile = ResumeProfile(
-            resume_id=path.stem,
+            resume_id=resume_id,
             source_path=str(path),
             source_filename=path.name,
             parsed_at=datetime.now(timezone.utc).isoformat(),

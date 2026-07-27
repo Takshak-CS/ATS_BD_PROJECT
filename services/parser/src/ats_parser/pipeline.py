@@ -45,7 +45,7 @@ def process_resume_file(
 ) -> ProcessedResumeResult:
     profiles_dir = output_dir / "profiles"
     profiles_dir.mkdir(parents=True, exist_ok=True)
-    target = profiles_dir / f"{path.stem}.json"
+    target = profiles_dir / f"{path.stem.strip()}.json"
     if target.exists() and not overwrite:
         return ProcessedResumeResult(profile_path=target, skipped=True, persisted=False)
 

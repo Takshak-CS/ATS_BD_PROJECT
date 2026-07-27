@@ -78,6 +78,13 @@ PYTHONPATH=shared/src:services/parser/src python3 -m ats_parser.consumer
   bullet lists such as `Ms. Office`, `XP Window`, and similar legacy tool
   labels. Some resumes with visible skill content can still end up with
   `No skills detected.` in the parser manifest.
+- Known limitation: the heuristic name extraction can misread section headers
+  as person names when the header block is weak or noisy. In particular,
+  `Work Experience` can currently survive the header-line fallback scoring and
+  be selected as the candidate name instead of being rejected as a section
+  heading. Reproduction examples seen during labeling include
+  `candidate_063.pdf`, `data-scientist-machine-learning-resume-example.pdf`,
+  and `cell-phone-retail-sales-associate-resume-example.pdf`.
 - The current implementation is intentionally heuristic-first so it stays easy
   to run and debug inside Ubuntu before the rest of the pipeline is added.
 - The Kafka consumer listens for `resume.uploaded` and publishes

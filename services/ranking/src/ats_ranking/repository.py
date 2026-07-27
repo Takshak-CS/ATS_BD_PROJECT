@@ -117,6 +117,59 @@ class RankingRepository:
             ).fetchall()
         )
 
+    def fetch_ranked_candidates(self, connection, job_id: str) -> list[dict]:
+        return list(
+            connection.execute(
+                f"""
+                SELECT r.job_id, r.resume_id, r.retrieval_rank, r.ranking_rank,
+                       r.semantic_similarity, r.final_score,
+                       c.name, c.email, c.phone, c.skills, c.education_count,
+                       c.experience_count, c.project_count, c.warning_count, c.profile_json
+                FROM {self.schema}.job_candidate_rankings r
+                JOIN {self.schema}.candidate_profiles c ON c.resume_id = r.resume_id
+                WHERE r.job_id = %s
+                ORDER BY r.ranking_rank, r.resume_id
+                """,
+                (job_id,),
+            ).fetchall()
+        )
+
+    def fetch_all_candidate_profiles(self, connection) -> list[dict]:
+        return list(
+            connection.execute(
+                f"""
+                SELECT resume_id, name, email, phone, skills, education_count,
+                       experience_count, project_count, warning_count, profile_json
+                FROM {self.schema}.candidate_profiles
+                ORDER BY resume_id
+                """
+            ).fetchall()
+        )
+
+    def fetch_job_embeddings(self, connection) -> dict[str, list[float]]:
+        return {
+            row["job_id"]: row["embedding"]
+            for row in connection.execute(
+                f"""
+                SELECT job_id, embedding
+                FROM {self.schema}.job_description_embeddings
+                ORDER BY job_id
+                """
+            ).fetchall()
+        }
+
+    def fetch_candidate_embeddings(self, connection) -> dict[str, list[float]]:
+        return {
+            row["resume_id"]: row["embedding"]
+            for row in connection.execute(
+                f"""
+                SELECT resume_id, embedding
+                FROM {self.schema}.candidate_profile_embeddings
+                ORDER BY resume_id
+                """
+            ).fetchall()
+        }
+
     def replace_rankings(self, connection, job_id: str, rows: list[dict]) -> None:
         connection.execute(
             f"DELETE FROM {self.schema}.job_candidate_rankings WHERE job_id = %s",

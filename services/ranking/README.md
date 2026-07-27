@@ -72,6 +72,20 @@ Example file:
 
 - `services/ranking/examples/relevance_labels.example.jsonl`
 
+For interactive manual review against the live PostgreSQL candidate set, use:
+
+```bash
+ats-ranking-label
+```
+
+The labeling CLI:
+
+- includes the current top-25 retrieved candidates for each job
+- adds a random sample from outside each job's top-25 to catch false negatives
+- writes accepted relevance labels to `data/labels/resume_jd_relevance.jsonl`
+- writes skipped or invalid pairs to `data/labels/resume_jd_relevance_excluded.jsonl`
+- resumes cleanly by skipping `(job_id, resume_id)` pairs already present in either file
+
 ### 2. Export offline feature dataset
 
 This exports one row per retrieved job-resume pair with:
