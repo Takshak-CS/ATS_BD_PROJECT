@@ -157,7 +157,7 @@ shared/       Shared schemas, utilities, and config contracts
 
 - [Architecture](docs/architecture.md)
 - [Running the pipeline](docs/running.md)
-- [Load testing methodology](docs/load-testing.md)
+- [Load testing methodology](docs/load_testing.md)
 - [Implementation roadmap](docs/implementation-roadmap.md)
 
 ---
