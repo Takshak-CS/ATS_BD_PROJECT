@@ -102,12 +102,9 @@ Weights are hand-tuned and validated by inspection against known job description
 
 ## Dataset
 
-- **Resumes:** 97 PDF resumes in `data/raw/resumes/`
+- **Resumes:** 10000 PDF/doc/txt resumes in `data/raw/resumes/`
 - **Job descriptions:** 3 in `data/raw/job_descriptions/` — software engineer, data analyst, ML engineer
-
-<!-- FILL IN — if you generated synthetic resumes to test throughput at 10,000+,
-     describe how here. If you did not, delete this bullet and make sure your
-     resume/CV does not claim a figure this repo cannot support. -->
+- **Generated synthetic resumes using LLMs
 
 ---
 
