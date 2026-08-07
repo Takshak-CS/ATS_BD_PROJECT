@@ -164,5 +164,5 @@ shared/       Shared schemas, utilities, and config contracts
 
 ## Contributors
 
-<!-- FILL IN — if this was team work, name everyone and what they owned.
-     If it was solo, delete this section. -->
+-[Takshak P](https://github.com/Takshak-CS)
+-[Suhas Kanamadi](https://github.com/suhas-kanamadi)
