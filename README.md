@@ -104,7 +104,7 @@ Weights are hand-tuned and validated by inspection against known job description
 
 - **Resumes:** 10000 PDF/doc/txt resumes in `data/raw/resumes/`
 - **Job descriptions:** 3 in `data/raw/job_descriptions/` — software engineer, data analyst, ML engineer
-- **Generated synthetic resumes using LLMs
+- **Generated synthetic resumes using LLMs to scale the corpus from 97 real resumes to 10,000 for throughput testing**
 
 ---
 
@@ -156,7 +156,7 @@ shared/       Shared schemas, utilities, and config contracts
 ## Documentation
 
 - [Architecture](docs/architecture.md)
-- [Running the pipeline](docs/RUNNING.md)
+- [Running the pipeline](docs/running.md)
 - [Load testing methodology](docs/load-testing.md)
 - [Implementation roadmap](docs/implementation-roadmap.md)
 
