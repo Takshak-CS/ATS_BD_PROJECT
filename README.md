@@ -47,12 +47,7 @@ PostgreSQL is the system of record. The message broker is transport, not truth.
 
 **Not yet implemented**
 
-- `services/ingestion` — upload API and object storage
-- `services/api` — recruiter-facing read API
-- Event-driven orchestration between services (currently run as a batch pipeline)
 - Learned ranking model to replace the current weighted heuristic
-
-The architecture above is the target design. The pipeline currently runs as a batch job through the same service boundaries, which means moving to event-driven orchestration is a transport change rather than a rewrite.
 
 ---
 
